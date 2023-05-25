@@ -1,0 +1,7 @@
+$ sudo dockerd >> run the docker deamon
+$ docker build . >> build the image from the current folder
+$ docker run <imageID>
+$ docker run -p 3000:3000 <imageID> >> make the port published - outer port - inner port
+$ docker ps >> list running containers
+$ docker ps -a >> list all condoctainers 
+$ docker stop <container name>
