@@ -1,0 +1,82 @@
+$ sudo dockerd >> run the docker deamon
+$ docker login
+$ docker logout
+
+-------------------------------------------------------------------------------
+PUSH - PULL
+-------------------------------------------------------------------------------
+$ docker push <image name>
+$ docker pull <image name>
+
+-------------------------------------------------------------------------------
+IMAGES - IMAGE
+-------------------------------------------------------------------------------
+$ docker images >> list images
+$ docker image tag <old name or image ID> <new name:tag> >> no rename but dockcreate a new one
+
+-------------------------------------------------------------------------------
+BUILD - build the image from the current folder (path can specify)
+-------------------------------------------------------------------------------
+$ docker build . 
+$ docker build -t <image name> . >> add name to the image
+$ docker build -t <image name><image tag> . >> add repository name and tag to the image, default: latest
+
+-------------------------------------------------------------------------------
+RUN
+-------------------------------------------------------------------------------
+$ docker run <image ID> >> from locally or from DockerHub
+$ docker run -it <image ID> >> interactive - exit: CTRL + C (twice)
+$ docker run -i -t <image ID>  >> interactive mode, input and output, short: -it
+$ docker run <image ID> >> attached mode by default - with termial accessible
+$ docker run --name <container_name> <image_name> 
+$ docker run -p 3000:3000 <image ID> >> make the port published - outer port - inner port
+$ docker run <image IDe> -d >> run with deattached mode
+$ docker run <-image ID> -rm >> automatically remove the container when it exits
+
+-------------------------------------------------------------------------------
+START - RESTART - STOP - ATTACHE
+-------------------------------------------------------------------------------
+$ docker start <container name> >> deattached mode - without terminal access, keep the ports defined by the run command
+$ docker start <container name> -a >> attached mode
+$ docker start -a -i <container name>  >> interactive mode, input and output
+$ docker restart <container name>
+$ docker stop <container name>
+$ docker attach <container name> >> attach a conteiner
+
+-------------------------------------------------------------------------------
+PS
+-------------------------------------------------------------------------------
+$ docker ps >> list running containers
+$ docker ps -a >> list all condoctainers 
+
+-------------------------------------------------------------------------------
+RM - RMI
+-------------------------------------------------------------------------------
+$ docker rm <container name> <container name> <...> >> remove 
+$ docker rmi <image ID> >> remove image, only not used by container
+
+-------------------------------------------------------------------------------
+LOGS
+-------------------------------------------------------------------------------
+$ docker logs <container name> >> show all logs
+$ docker logs <container name> -f >> show all logs with follow listenings
+
+-------------------------------------------------------------------------------
+INSPECT
+-------------------------------------------------------------------------------
+$ docker inspect image <image ID> >> inspect image
+$ docker inspect <container name> >> inspect container
+
+-------------------------------------------------------------------------------
+PRUNE
+-------------------------------------------------------------------------------
+$ docker image prune >>  Remove all dangling images (untagged images)
+$ docker image prune -a >>  Remove all locally stored images
+$ docker container prune >> Remove all stopped containers
+
+------------------------------------------------------------------------------
+CP - coopy files to or from container
+-------------------------------------------------------------------------------
+$ docker cp <source> <container name>:<destination> >> copy files, directories to container
+$ docker cp <container name>:<source> <destination> >> copy files, directories from container
+$ docker cp hello/. 02-node:test >> the content of the hello directory copy to test directory (not in the workdir but one level upper)

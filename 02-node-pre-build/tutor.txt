@@ -1,2 +1,0 @@
-$ docker run node >> pre-build image from DockerHub
-$ docker run -it node >> interactive - exit: CTRL + C (twice)
