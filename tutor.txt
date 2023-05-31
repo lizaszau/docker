@@ -30,8 +30,18 @@ $ docker run -i -t <image ID>  >> interactive mode, input and output, short: -it
 $ docker run <image ID> >> attached mode by default - with termial accessible
 $ docker run --name <container_name> <image_name> 
 $ docker run -p 3000:3000 <image ID> >> make the port published - outer port - inner port
-$ docker run <image IDe> -d >> run with deattached mode
-$ docker run <-image ID> -rm >> automatically remove the container when it exits
+$ docker run <image ID> -d >> run with deattached mode
+$ docker run --rm <-image ID> >> automatically remove the container when it exits
+$ docker run <image ID> -v <volume name>:<volume path> >> named volume - the name is optional, the path is real in the container
+
+-------------------------------------------------------------------------------
+RUN - bind
+-------------------------------------------------------------------------------
+https://headsigned.com/posts/mounting-docker-volumes-with-docker-toolbox-for-windows/
+If fullpath contains special chars, wrap around " sign the whole mapping
+In the Docker settings resources->file sharing add the directory
+
+$ docker run <image ID> -v <app folder real path>:<volume path> >> bind host machine app folder to container
 
 -------------------------------------------------------------------------------
 START - RESTART - STOP - ATTACHE
@@ -80,3 +90,12 @@ CP - coopy files to or from container
 $ docker cp <source> <container name>:<destination> >> copy files, directories to container
 $ docker cp <container name>:<source> <destination> >> copy files, directories from container
 $ docker cp hello/. 02-node:test >> the content of the hello directory copy to test directory (not in the workdir but one level upper)
+
+------------------------------------------------------------------------------
+VOLUME
+-------------------------------------------------------------------------------
+$ docker volume ls >> list of volumes
+$ docker volume rm <volume name>
+$ docker volume prune
+
+/home/lizaszauder/Documents/www/docker/06-node-data
